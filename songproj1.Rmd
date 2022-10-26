@@ -1,0 +1,36 @@
+---
+title: "Project 1"
+subtitle: "CPSC 292 Section 1-- (Waldrop)"
+author: "Aubrey Yokota"
+date: "10/20/2022"
+output: html_notebook
+---
+
+## Project #1
+
+```{r}
+# Loading required libraries
+library(ggplot2)
+library(tidyr)
+library(readr)
+library(tibble)
+library(rmarkdown)
+getwd()
+Top.100.most.Streamed.Sheet1 <- read.csv("Top.100.most.Streamed.Sheet1.csv")
+```
+
+### Visual 1
+
+```{r}
+A<-ggplot(Top.100.most.Streamed.Sheet1, aes(x=length,y=beats.per.minute,fill=energy)) +geom_point(pch=21, col="red", size=2) + xlab("Length") + ylab("Beats per Minute")
+A+ xlab("Length (seconds)") +ylab("Beats per Minute (bpm)")+ggtitle("Length and Beats per Minute of the Top 100 Most Streamed Songs by Energy")
+
+```
+
+### Visual 2
+
+```{r}
+pop<-Top.100.most.Streamed.Sheet1[c("acoustic pop"&"australian pop"&"canadian pop"&"dance pop"&"danish pop"&"pop"&"pop dance"&"pop rap")]
+C <-ggplot(data = Top.100.most.Streamed.Sheet1 ) + geom_bar(mapping=aes(x=year,fill=top.genre)) 
+C + xlab("Year")+ ylab("Number of Top 100 Most Streamed Songs")+ ggtitle("Number of Top 100 Most Streamed Songs per Year by Top Genres")
+```
